@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Kakoune Explain</title>
+	<link rel="stylesheet" type="text/css" href="kakoune-explain.css" />
+</head>
+<body>
+	<main>
+		<h1><img id="kakoune-logo" src="kakoune-logo.svg" alt="kakoune logo">Kakoune Explain (alpha)</h1>
+
+		<div id="keys-holder">
+			<textarea id="keys" placeholder="Type keys…">%<a-s>hyQ10hRQ6q</textarea>
+			<div>
+				<strong>Mode:</strong> <span id="mode"></span> |
+				<strong>Count:</strong> <span id="count"></span>
+			</div>
+			<h2 id="counter"> key(s)</h2>
+			<div id="annotations"></div>
+		</div>
+
+		<h2>Examples</h2>
+		<h3>Click one of these lines to fill the textarea</h3>
+		<ul id="examples">
+			<li><code>fuf}dOf=f;&lt;esc>P</code></li>
+			<li><code>xsb|l&lt;ret&gt;2E&lt;a-'&gt;</code></li>
+			<li><code>Qxs,&lt;ret&gt;a&lt;ret&gt;&lt;esc&gt;&lt;a-x&gt;s:&lt;ret&gt;&&lt;esc&gt;&lt;space&gt;jq</code></li>
+			<li><code>"_dihello&lt;esc&gt;"ap%|sort&lt;ret&gt;&lt;a-m&gt;</code></li>
+		</ul>
+
+		<h2>About</h2>
+		<div id="about">
+		<pre>
+ ___          
+(__ \         
+  / /         
+ .' '·.       
+'      ”      
+╰       /\_/| 
+ | .         \
+ ╰_J`    | | |
+     ' \__- _/
+     \_\   \_\
+		</pre>
+		<div>
+		<p>This <a href="https://github.com/Delapouite/kakoune-explain">tool</a> let's you type <a href="http://kakoune.org/">kakoune</a> keys in the textarea at the top and translate them into plain English commands.</p>
+		<p>For more illustrated examples see <a href="https://delapouite.github.io/kakoune-tv/">Kakoune TV</a>.</p>
+		<p>Check <a href="https://github.com/mawww/kakoune/blob/master/doc/manpages/keys.asciidoc">keys.asciidoc</a> and <a href="https://github.com/mawww/kakoune/blob/master/doc/keymap">the keyboard cheat sheet</a> for help.</p>
+		<p>Enjoy! – <em>Delapouite</em></p>
+		</div>
+		</div>
+	</main>
+	<script src="kakoune-explain.js"></script>
+</body>
+</html>
