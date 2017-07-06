@@ -22,8 +22,8 @@ const promptKeys = {
 	'!':     'insert external [text] command output',
 	'<a-!>': 'append external [text] command output',
 	'$':     'keep selections where external [text] command succeed',
-	'|':     'pipe selections through external command and replace',
-	'<a-|>': 'pipe selections through external command and ignore',
+	'|':     'pipe selections through external [text] command and replace',
+	'<a-|>': 'pipe selections through external [text] command and ignore',
 }
 
 const chooseKeys = {
