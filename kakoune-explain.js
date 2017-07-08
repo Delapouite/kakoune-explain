@@ -555,7 +555,7 @@ function render () {
 	annotations.appendChild(createDl(logs))
 
 	// sharing
-	window.location.hash = keys
+	window.location.hash = encodeURIComponent(keys)
 }
 
 $('#examples').onclick = function (event) {
@@ -567,7 +567,7 @@ $('#examples').onclick = function (event) {
 $('#keys').onkeyup = render
 $('#keys').onchange = render
 if (window.location.hash)
-	$('#keys').value = window.location.hash.slice(1)
+	$('#keys').value = decodeURIComponent(window.location.hash.slice(1))
 
 // init
 render()
