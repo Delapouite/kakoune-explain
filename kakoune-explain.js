@@ -265,7 +265,7 @@ function annotate (tokens) {
 					switch (t) {
 						case '<esc>':
 							push(t, 'stop macro recording ◼')
-							macroRecording = !macroRecording
+							macroRecording = false
 							break
 
 						case '"':
@@ -477,7 +477,7 @@ function createDt (a) {
 		macro.textContent = '║'
 		macro.classList.add('macro')
 	}
-	if (a.key === '<esc>') {
+	if (a.macro && a.key === '<esc>') {
 		macro = h('span')
 		macro.textContent = '╚'
 		macro.classList.add('macro')
