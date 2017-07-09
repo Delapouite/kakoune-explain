@@ -89,7 +89,7 @@ const keys = {
 	'<a-P>':     'paste every yanked selection before selected text',
 	'q':         'replay recorded macro ▶',
 	'R':         'replace selected text with yanked text',
-	'<a-R>':     'replace selected text with yanked text',
+	'<a-R>':     'replace selected text with every yanked text',
 	'<a-s>':     'split selected text on line ends',
 	'u':         'undo',
 	'U':         'redo',
@@ -126,6 +126,7 @@ const keys = {
 	'<a-">':     'rotate selections content',
 	';':         'reduce selections to their cursor',
 	'<a-;>':     'swap selections cursor and anchor',
+	'<a-:>':     'ensure selection cursor is after anchor',
 	'\\':        'disable hooks',
 	',':         'user mode',
 }
