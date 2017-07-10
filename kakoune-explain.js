@@ -65,6 +65,7 @@ const keys = {
 	'E':         'extend to next word end',
 	'<a-e>':     'select to next WORD end',
 	'<a-E>':     'extend to next WORD end',
+	'g':         'go to line',
 	'h':         'move left ←',
 	'H':         'extend left ⇐',
 	'<a-h>':     'select to line begin',
@@ -231,7 +232,6 @@ function annotate (tokens) {
 				}
 				mode = 'n'
 				continue
-			break
 
 			// view lock mode
 			case 'V':
@@ -265,8 +265,12 @@ function annotate (tokens) {
 						dt: promptKeys[t],
 					})
 				} else if (chooseKeys[t]) {
-					op = [t, chooseKeys[t]]
-					mode = 'c'
+					if (countBuffer.length && t === 'g') {
+						push(t, keys[t])
+					} else {
+						op = [t, chooseKeys[t]]
+						mode = 'c'
+					}
 				} else if (lockKeys[t]) {
 					mode = 'V'
 					logs.push({
@@ -524,10 +528,11 @@ function createDd (a) {
 		pre.textContent = m[0]
 
 		var text = h('em')
-		text.textContent = a.insert || a.prompt || a.lock
+		text.textContent = a.insert
 			|| (a.op && 'gG'.includes(a.op) && getGotoName(a.prompt, a.op))
 			|| (a.op && 'v'.includes(a.op) && getViewName(a.prompt, a.op))
 			|| (a.op && ['<a-z>', '<a-Z>'].includes(a.op) && getComboName(a.prompt))
+			|| a.prompt || a.lock
 			|| `${getRegName(a.reg, a.key)} register`
 
 		var post = h('span')
@@ -538,9 +543,15 @@ function createDd (a) {
 		dd.appendChild(post)
 	}
 	if (a.count) {
-		var count = h('strong')
-		count.textContent = ` (${a.count} times)`
-		dd.appendChild(count)
+		if (a.key === 'g') {
+			let line = h('em')
+			line.textContent = a.count
+			dd.appendChild(line)
+		} else {
+			let count = h('strong')
+			count.textContent = ` (${a.count} times)`
+			dd.appendChild(count)
+		}
 	}
 	if (a.cancelled) dd.classList.add('cancelled')
 
