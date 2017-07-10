@@ -183,31 +183,18 @@ function annotate (tokens) {
 			// insert mode
 			case 'i':
 				if (t === '<esc>') {
-					logs.push({
-						macro: macroRecording,
-						op: op[0],
-						insert: insertBuffer.join(''),
-						validator: t,
-						dt: op[1]
-					})
+					logs[logs.length - 1].validator = t
 					insertBuffer = []
 					mode = 'n'
 				} else if (t === '<a-;>') {
-					logs.push({
-						macro: macroRecording,
-						op: op[0],
-						insert: insertBuffer.join(''),
-						dt: op[1]
-					})
 					insertBuffer = []
-
-					op = ['', 'insert [text]']
 					push(t, 'escape to normal mode for a single command')
 					mode = 'n'
 					oneShot = true
 					continue
 				} else if (t !== '<home>' && t !== '<end>') {
 					insertBuffer.push(t)
+					logs[logs.length - 1].insert = insertBuffer.join('')
 					continue
 				}
 			break
@@ -215,18 +202,13 @@ function annotate (tokens) {
 			// prompt mode
 			case 'p':
 				if (t === '<esc>' || t === '<ret>') {
-					logs.push({
-						cancelled: t === '<esc>',
-						macro: macroRecording,
-						op: op[0],
-						prompt: promptBuffer.join(''),
-						validator: t,
-						dt: op[1]
-					})
+					logs[logs.length - 1].validator = t
+					logs[logs.length - 1].cancelled = t === '<esc>',
 					promptBuffer = []
 					mode = 'n'
 				} else {
 					promptBuffer.push(t)
+					logs[logs.length - 1].prompt = promptBuffer.join('')
 					continue
 				}
 			break
@@ -247,13 +229,24 @@ function annotate (tokens) {
 				continue
 			break
 
+			// normal mode
 			default:
 				if (insertKeys[t]) {
-					op = [t, insertKeys[t]]
 					mode = 'i'
+					logs.push({
+						macro: macroRecording,
+						op: t,
+						insert: insertBuffer.join(''),
+						dt: insertKeys[t],
+					})
 				} else if (promptKeys[t]) {
-					op = [t, promptKeys[t]]
 					mode = 'p'
+					logs.push({
+						macro: macroRecording,
+						op: t,
+						prompt: promptBuffer.join(''),
+						dt: promptKeys[t],
+					})
 				} else if (chooseKeys[t]) {
 					op = [t, chooseKeys[t]]
 					mode = 'c'
@@ -294,10 +287,7 @@ function annotate (tokens) {
 								})
 								insertBuffer = []
 							}
-							push(t, 'select to line ' + (t === 'home' ? 'begin' : 'end'))
-							break
-
-						case '<a-;>':
+							push(t, 'select to line ' + (t === 'home' ? 'begin' : 'end'))
 							break
 
 						default:
@@ -310,6 +300,12 @@ function annotate (tokens) {
 		if (oneShot) {
 			oneShot = false
 			mode = 'i'
+			logs.push({
+				macro: macroRecording,
+				op: '',
+				insert: insertBuffer.join(''),
+				dt: 'insert [text]',
+			})
 		}
 
 		// modify previous log
@@ -421,16 +417,6 @@ function escapeB (keys) {
 	return keys
 }
 
-function mark (kak, vim) {
-	var symbol = '·'
-	if (kak > vim) symbol = `✘`
-	if (vim > kak) symbol = '✔'
-	var diff = kak - vim
-	if (diff > 0) diff = '+' + diff
-
-	return `${symbol} (${diff}) – `
-}
-
 // UI
 
 const $ = document.querySelector.bind(document)
@@ -478,7 +464,7 @@ function createDt (a) {
 		macro.textContent = '║'
 		macro.classList.add('macro')
 	}
-	if (a.macro && a.key === '<esc>') {
+	if (a.macro && a.key === '<esc>') {
 		macro = h('span')
 		macro.textContent = '╚'
 		macro.classList.add('macro')
@@ -517,6 +503,7 @@ function createDd (a) {
 			|| (a.op && 'v'.includes(a.op) && getViewName(a.prompt, a.op))
 			|| (a.op && ['<a-z>', '<a-Z>'].includes(a.op) && getComboName(a.prompt))
 			|| (a.op && a.prompt)
+			|| (a.op && a.insert)
 			|| `${getRegName(a.reg, a.key)} register`
 
 		var post = h('span')
