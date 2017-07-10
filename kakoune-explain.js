@@ -236,7 +236,7 @@ function annotate (tokens) {
 					logs.push({
 						macro: macroRecording,
 						op: t,
-						insert: insertBuffer.join(''),
+						insert: '…',
 						dt: insertKeys[t],
 					})
 				} else if (promptKeys[t]) {
@@ -244,7 +244,7 @@ function annotate (tokens) {
 					logs.push({
 						macro: macroRecording,
 						op: t,
-						prompt: promptBuffer.join(''),
+						prompt: '…',
 						dt: promptKeys[t],
 					})
 				} else if (chooseKeys[t]) {
