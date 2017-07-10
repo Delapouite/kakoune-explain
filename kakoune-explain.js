@@ -39,7 +39,6 @@ const chooseKeys = {
 	'<a-t>': 'select to previous [text] character',
 	'<a-T>': 'extend to previous [text] character',
 	'v':     'view [text]',
-	'V':     'view (lock) [text]', // TODO
 	'<a-z>': 'combine selections from register ([text])',
 	'<a-Z>': 'combine selections to register ([text])',
 	'<a-a>': 'select around object [text]',
@@ -48,6 +47,10 @@ const chooseKeys = {
 	']':     'select to surrounding object end [text]',
 	'{':     'extend to surrounding object begin [text]',
 	'}':     'extend to surrounding object end [text]',
+}
+
+const lockKeys = {
+	'V': 'view (lock) [text]',
 }
 
 const keys = {
@@ -146,6 +149,7 @@ function annotate (tokens) {
 	var insertBuffer = []
 	var promptBuffer = []
 	var countBuffer = []
+	var lockBuffer = []
 
 	var op
 
@@ -229,6 +233,19 @@ function annotate (tokens) {
 				continue
 			break
 
+			// view lock mode
+			case 'V':
+				if (t === '<esc>') {
+					logs[logs.length - 1].validator = t
+					lockBuffer = []
+					mode = 'n'
+				} else {
+					lockBuffer.push(t)
+					logs[logs.length - 1].lock = lockBuffer.join('')
+					continue
+				}
+			break
+
 			// normal mode
 			default:
 				if (insertKeys[t]) {
@@ -250,6 +267,14 @@ function annotate (tokens) {
 				} else if (chooseKeys[t]) {
 					op = [t, chooseKeys[t]]
 					mode = 'c'
+				} else if (lockKeys[t]) {
+					mode = 'V'
+					logs.push({
+						macro: macroRecording,
+						op: t,
+						lock: '…',
+						dt: lockKeys[t],
+					})
 				} else if (keys[t]) {
 					push(t, keys[t])
 				} else if (!isNaN(Number(t))) {
@@ -308,9 +333,8 @@ function annotate (tokens) {
 			})
 		}
 
-		// modify previous log
-
 		// count
+
 		if (countBuffer.length && isNaN(Number(t))) {
 			logs[logs.length - 1].count = countBuffer.join('')
 			countBuffer = []
@@ -394,8 +418,9 @@ function getViewName (str, key = '') {
 function getModeName (str) {
 	const modes = {
 		'i':'insert (type <esc> to return to normal mode)',
-		'p':'prompt (type <ret> to return to normal mode)',
+		'p':'prompt (type <ret> or <esc> to return to normal mode)',
 		'c':'enter key',
+		'V':'view lock (type <esc> to return to normal mode)',
 	}
 	return modes[str] || 'normal'
 }
@@ -480,6 +505,7 @@ function createDt (a) {
 	if (a.op) createKbd(a.op)
 	if (a.insert) createKbd(a.insert, 'insert')
 	if (a.prompt) createKbd(a.prompt, 'prompt')
+	if (a.lock) createKbd(a.lock, 'lock')
 	if (a.validator) createKbd(a.validator, 'validator')
 	// TODO handle INVALID
 	if (a.cancelled) dt.classList.add('cancelled')
@@ -498,12 +524,10 @@ function createDd (a) {
 		pre.textContent = m[0]
 
 		var text = h('em')
-		text.textContent = a.insert
+		text.textContent = a.insert || a.prompt || a.lock
 			|| (a.op && 'gG'.includes(a.op) && getGotoName(a.prompt, a.op))
 			|| (a.op && 'v'.includes(a.op) && getViewName(a.prompt, a.op))
 			|| (a.op && ['<a-z>', '<a-Z>'].includes(a.op) && getComboName(a.prompt))
-			|| (a.op && a.prompt)
-			|| (a.op && a.insert)
 			|| `${getRegName(a.reg, a.key)} register`
 
 		var post = h('span')

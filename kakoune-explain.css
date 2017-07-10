@@ -73,6 +73,11 @@ kbd.kbd-prompt {
 	border-color: #1c758e;
 }
 
+kbd.kbd-lock {
+	background-color: #1c758e;
+	border-color: #1c758e;
+}
+
 kbd.kbd-reg {
 	background-color: #ddaf3c;
 	border-color: #ddaf3c;
