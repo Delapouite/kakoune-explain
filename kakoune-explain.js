@@ -551,7 +551,7 @@ function render () {
 	const keys = $('#keys').value.trim()
 	const tokens = tokenize(keys)
 
-	$('#counter').textContent =
+	$('#total').textContent =
 		tokens.length > 1
 			? `${tokens.length} keys`
 			: tokens.length === 1
@@ -561,6 +561,7 @@ function render () {
 	const { logs, mode, countBuffer } = annotate(tokens)
 	$('#mode').textContent = getModeName(mode)
 	$('#count').textContent = countBuffer.join('') || 0
+	$('#count-holder').style.display = (!countBuffer.length) ? 'none' : 'inline'
 
 	const annotations = $('#annotations')
 	annotations.innerHTML = ''
