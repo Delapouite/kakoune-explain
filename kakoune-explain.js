@@ -3,13 +3,14 @@
 (function () {
 
 const insertKeys = {
-	'a': 'insert [text] after selected text',
-	'A': 'insert [text] at line end',
-	'c': 'change selected text to [text]',
-	'i': 'insert [text] before selected text',
-	'I': 'insert [text] at line begin',
-	'o': 'insert [text] on new line below',
-	'O': 'insert [text] on new line above',
+	'a':     'insert [text] after selected text',
+	'A':     'insert [text] at line end',
+	'c':     'change selected text to [text]',
+	'<a-c>': 'change selected text to [text] without yanking',
+	'i':     'insert [text] before selected text',
+	'I':     'insert [text] at line begin',
+	'o':     'insert [text] on new line below',
+	'O':     'insert [text] on new line above',
 }
 
 const promptKeys = {
@@ -61,6 +62,7 @@ const keys = {
 	'C':         'copy selection on next lines',
 	'<a-C>':     'copy selection on previous lines',
 	'd':         'delete selected text to [text]',
+	'<a-d>':     'delete selected text without yanking',
 	'e':         'select to next word end',
 	'E':         'extend to next word end',
 	'<a-e>':     'select to next WORD end',
@@ -123,6 +125,7 @@ const keys = {
 	'<a-*>':     'set search pattern to main selection content, do not detect words',
 	'%':         'select whole buffer',
 	'.':         'repeat last insert command',
+	'<a-.>':     'repeat last object select / character find',
 	'<':         'dedent',
 	'<a-lt>':    'dedent, not including incomplete indent',
 	'>':         'indent',
