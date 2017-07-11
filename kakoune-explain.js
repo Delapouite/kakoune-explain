@@ -87,6 +87,8 @@ const keys = {
 	'N':         'extend with next current search pattern match',
 	'<a-n>':     'select previous current search pattern match',
 	'<a-N>':     'extend with previous current search pattern match',
+	'<a-o>':     'add new empty line below',
+	'<a-O>':     'add new empty line above',
 	'p':         'paste [text] after selected text',
 	'P':         'paste [text] before lselected text',
 	'<a-p>':     'paste every yanked selection after selected text',
