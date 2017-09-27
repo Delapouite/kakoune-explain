@@ -92,7 +92,7 @@ const keys = {
 	'<a-o>':     'add new empty line below',
 	'<a-O>':     'add new empty line above',
 	'p':         'paste [text] after selected text',
-	'P':         'paste [text] before lselected text',
+	'P':         'paste [text] before selected text',
 	'<a-p>':     'paste every yanked selection after selected text',
 	'<a-P>':     'paste every yanked selection before selected text',
 	'q':         'replay recorded macro ▶',
