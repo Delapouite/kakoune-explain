@@ -286,7 +286,8 @@ function annotate (tokens) {
 					})
 				} else if (keys[t]) {
 					push(t, keys[t])
-				} else if (!isNaN(Number(t))) {
+				} else if (!isNaN(Number(t)) && t !== ' ') {
+					// beware of spaces: Number(' ') === 0
 					countBuffer.push(t)
 				} else {
 					// special keys
