@@ -1,0 +1,40 @@
+html, body {
+  font-family: Arial, Verdana, sans-serif;
+  font-size: 12px;
+}
+
+label {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+input, span.query {
+  margin: 0 1em;
+}
+
+span.query {
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  font-size: 12px;
+  padding: .2em .8em;
+}
+
+td {
+  background: #f9f9f9;
+  font-size: 12px;
+  padding: .8em;
+}
+
+td.exist {
+  background: #eee;
+}
+
+div.tags {
+  color: #666;
+}
