@@ -74,7 +74,7 @@ const keys = [
     key: 'C',
     normal: {
       base: 'copy selection on next line | ↓ count',
-      alt: 'copy selection on previous line | ↑ count',
+      alt: 'copy selection on previous line | ↑ count opposite',
     },
   },
   {
@@ -115,7 +115,7 @@ const keys = [
     key: 'f',
     normal: {
       base: 'select to next char included | → count',
-      alt: 'select to previous char included | ← count',
+      alt: 'select to previous char included | ← count opposite',
       ctrl: 'scroll one page down | ↓ count',
     },
     goto: {
@@ -126,7 +126,7 @@ const keys = [
     key: 'F',
     normal: {
       base: 'extend to next char included | → count',
-      alt: 'extend to previous char included | ← count',
+      alt: 'extend to previous char included | ← count opposite',
     },
   },
   {
@@ -277,7 +277,7 @@ const keys = [
     key: 'n',
     normal: {
       base: 'select next search pattern match | → count',
-      alt: 'select previous search pattern match | ← count',
+      alt: 'select previous search pattern match | ← count opposite',
     },
     prompt: {
       ctrl: 'next history entry | ↓→',
@@ -293,7 +293,7 @@ const keys = [
     key: 'N',
     normal: {
       base: 'extend with next search pattern match | → count',
-      alt: 'extend with previous search pattern match | ← count',
+      alt: 'extend with previous search pattern match | ← count opposite',
     },
   },
   {
@@ -313,8 +313,8 @@ const keys = [
   {
     key: 'O',
     normal: {
-      base: 'insert on a new line above | ↑ count',
-      alt: 'add an empty line above cursor | ↑ count',
+      base: 'insert on a new line above | ↑ count opposite',
+      alt: 'add an empty line above cursor | ↑ count opposite',
     },
   },
   {
@@ -333,8 +333,8 @@ const keys = [
   {
     key: 'P',
     normal: {
-      base: 'paste before | ←',
-      alt: 'paste all before | ←',
+      base: 'paste before | ← opposite',
+      alt: 'paste all before | ← opposite',
     },
     object: {
       base: 'paragraph | object',
@@ -402,7 +402,7 @@ const keys = [
     key: 't',
     normal: {
       base: 'select till next char | → count',
-      alt: 'select till previous char | ← count',
+      alt: 'select till previous char | ← count opposite',
     },
     goto: {
       base: 'window top | ↑',
@@ -415,7 +415,7 @@ const keys = [
     key: 'T',
     normal: {
       base: 'extend to next char | → count',
-      alt: 'extend to previous char | ← count',
+      alt: 'extend to previous char | ← count opposite',
     },
   },
   {
@@ -438,8 +438,8 @@ const keys = [
   {
     key: 'U',
     normal: {
-      base: 'redo | count',
-      alt: 'move forward in history | ↓→ count',
+      base: 'redo | count opposite',
+      alt: 'move forward in history | ↓→ count opposite',
     },
   },
   {
@@ -518,7 +518,7 @@ const keys = [
   {
     key: 'z',
     normal: {
-      base: 'restore selections | register',
+      base: 'restore selections | register',
       alt: 'combine selections from register',
     },
   },
@@ -587,8 +587,8 @@ const keys = [
   {
     key: '>',
     normal: {
-      base: 'indent | → count',
-      alt: 'indent including empty lines | →',
+      base: 'indent | → count opposite',
+      alt: 'indent including empty lines | → opposite',
     },
     object: {
       base: 'angle block | object',
@@ -610,7 +610,7 @@ const keys = [
     key: "'",
     normal: {
       base: 'rotate main selection forward | →',
-      alt: 'rotate main selection backward | ←',
+      alt: 'rotate main selection backward | ← opposite',
     },
     object: {
       base: 'single quote string | object',
@@ -651,7 +651,7 @@ const keys = [
     key: '/',
     normal: {
       base: 'select next given regex match | → jump register',
-      alt: 'select previous given regex match | ← jump register',
+      alt: 'select previous given regex match | ← jump register opposite',
     },
     register: {
       base: 'search',
@@ -661,7 +661,7 @@ const keys = [
     key: '?',
     normal: {
       base: 'extend with next given regex match | → jump register',
-      alt: 'extend with previous given regex match | ← jump register',
+      alt: 'extend with previous given regex match | ← jump register opposite',
     },
   },
   {
@@ -742,6 +742,7 @@ const keys = [
     key: '.',
     normal: {
       base: 'repeat last insert command',
+      alt: 'repeat last object / char find',
     },
     goto: {
       base: 'last buffer change | jump',
@@ -964,6 +965,7 @@ const queries = [
   'object',
   'count',
   'register',
+  'opposite',
   '←',
   '→',
   '↑',
@@ -1107,7 +1109,9 @@ const Td = ({ k, mode, modKey }) => {
     { key: modKey, className: k[mode] && k[mode][modKey] ? 'exist' : '' },
     !hidden && def && h('div', {}, def),
     !hidden && tags && h('div', { className: 'tags' }, !hidden && tags),
-    !hidden && primitives && h('div', { className: 'tags' }, !hidden && primitives),
+    !hidden &&
+      primitives &&
+      h('div', { className: 'tags' }, !hidden && primitives),
   )
 }
 
