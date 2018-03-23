@@ -781,7 +781,7 @@ const keys = [
   {
     key: '_',
     register: {
-      base: 'null',
+      base: 'trim',
     },
   },
   {
