@@ -608,10 +608,6 @@ const keys = [
   },
   {
     key: "'",
-    normal: {
-      base: 'rotate main selection forward | →',
-      alt: 'rotate main selection backward | ← opposite',
-    },
     object: {
       base: 'single quote string | object',
     },
@@ -620,7 +616,6 @@ const keys = [
     key: '"',
     normal: {
       base: 'choose register',
-      alt: 'rotate selections contents forward | →',
     },
     register: {
       base: 'yank / paste',
@@ -706,12 +701,20 @@ const keys = [
   },
   {
     key: '(',
+    normal: {
+      base: 'rotate main selection backward | ←',
+      alt: 'rotate selections contents backward | ←',
+    },
     object: {
       base: 'parenthesis block | object',
     },
   },
   {
     key: ')',
+    normal: {
+      base: 'rotate main selection forward | →',
+      alt: 'rotate selections contents forward | →',
+    },
     object: {
       base: 'parenthesis block | object',
     },
@@ -781,7 +784,7 @@ const keys = [
   },
   {
     key: '_',
-    register: {
+    normal: {
       base: 'trim',
     },
   },
