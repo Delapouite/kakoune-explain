@@ -48,6 +48,10 @@ const chooseKeys = {
 	']':     'select to surrounding object end [text]',
 	'{':     'extend to surrounding object begin [text]',
 	'}':     'extend to surrounding object end [text]',
+	'<a-[>': 'select to inner surrounding object begin [text]',
+	'<a-]>': 'select to inner surrounding object end [text]',
+	'<a-{>': 'extend to inner surrounding object begin [text]',
+	'<a-}>': 'extend to inner surrounding object end [text]',
 }
 
 const lockKeys = {
@@ -130,13 +134,15 @@ const keys = {
 	'<a-lt>':    'dedent, not including incomplete indent',
 	'>':         'indent',
 	'<a-gt>':    'indent, including empty lines',
-	"'":         'rotate main selection forward',
-	"<a-'>":     'rotate main selection backward',
-	'<a-">':     'rotate selections content',
+	")":         'rotate main selection forward',
+	"(":         'rotate main selection backward',
+	'<a-(>':     'rotate selections content forward',
+	'<a-)>':     'rotate selections content backward',
 	';':         'reduce selections to their cursor',
 	'<a-;>':     'swap selections cursor and anchor',
 	'<a-:>':     'ensure selection cursor is after anchor',
 	'\\':        'disable hooks',
+	'_':         'trim selections',
 	',':         'user mode',
 }
 
