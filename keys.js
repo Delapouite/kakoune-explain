@@ -58,7 +58,7 @@ const keys = [
     key: 'c',
     normal: {
       base: 'change selection content | register | di',
-      alt: 'change selection content (not yanking)',
+      alt: 'change selection content (not yanking) | <a-d>i',
     },
     goto: {
       base: 'window center',
@@ -150,8 +150,8 @@ const keys = [
   {
     key: 'h',
     normal: {
-      base: 'move left | ← count',
-      alt: 'select to line start | ←',
+      base: 'move left | ← count | <left>',
+      alt: 'select to line start | ← | <home>',
     },
     prompt: {
       alt: 'move left | ←',
@@ -166,8 +166,8 @@ const keys = [
   {
     key: 'H',
     normal: {
-      base: 'extend left | ← count',
-      alt: 'extend to line start | ←',
+      base: 'extend left | ← count | <s-left>',
+      alt: 'extend to line start | ← | <s-home>',
     },
   },
   {
@@ -196,7 +196,7 @@ const keys = [
   {
     key: 'j',
     normal: {
-      base: 'move down | ↓ count',
+      base: 'move down | ↓ count | <down>',
       alt: 'join lines',
     },
     goto: {
@@ -209,14 +209,14 @@ const keys = [
   {
     key: 'J',
     normal: {
-      base: 'extend down | ↓ count',
+      base: 'extend down | ↓ count | <s-down>',
       alt: 'join lines and select spaces',
     },
   },
   {
     key: 'k',
     normal: {
-      base: 'move up | ↑ count',
+      base: 'move up | ↑ count | <up>',
       alt: 'keep selections matching given regex',
     },
     goto: {
@@ -229,15 +229,15 @@ const keys = [
   {
     key: 'K',
     normal: {
-      base: 'extend up | ↑ count',
+      base: 'extend up | ↑ count | <s-up>',
       alt: 'keep selections not matching given regex',
     },
   },
   {
     key: 'l',
     normal: {
-      base: 'move right | → count',
-      alt: 'select to line end | →',
+      base: 'move right | → count | <right>',
+      alt: 'select to line end | → | <end>',
       ctrl: 'clear screen',
     },
     prompt: {
@@ -253,8 +253,8 @@ const keys = [
   {
     key: 'L',
     normal: {
-      base: 'extend right | → count',
-      alt: 'extend to line end | →',
+      base: 'extend right | → count | <s-right>',
+      alt: 'extend to line end | → | <s-end>',
     },
   },
   {
@@ -807,9 +807,9 @@ const keys = [
     },
   },
   {
-    key: 'Up',
+    key: '<up>',
     normal: {
-      base: 'move up | ↑ count',
+      base: 'move up | ↑ count | k',
     },
     insert: {
       base: 'move up | ↑',
@@ -819,9 +819,15 @@ const keys = [
     },
   },
   {
-    key: 'Down',
+    key: '<s-up>',
     normal: {
-      base: 'move down | ↓ count',
+      base: 'extend up | ↑ count | K',
+    },
+  },
+  {
+    key: '<down>',
+    normal: {
+      base: 'move down | ↓ count | j',
     },
     insert: {
       base: 'move down | ↓',
@@ -831,9 +837,15 @@ const keys = [
     },
   },
   {
-    key: 'Left',
+    key: '<s-down>',
     normal: {
-      base: 'move left | ← count',
+      base: 'extend down | ↓ count | J',
+    },
+  },
+  {
+    key: '<left>',
+    normal: {
+      base: 'move left | ← count | h',
     },
     insert: {
       base: 'move left | ←',
@@ -843,9 +855,15 @@ const keys = [
     },
   },
   {
-    key: 'Right',
+    key: '<s-left>',
     normal: {
-      base: 'move right | → count',
+      base: 'extend left | ← count | H',
+    },
+  },
+  {
+    key: '<right>',
+    normal: {
+      base: 'move right | → count | l',
     },
     insert: {
       base: 'move right | →',
@@ -855,37 +873,55 @@ const keys = [
     },
   },
   {
-    key: 'Home',
+    key: '<s-right>',
     normal: {
-      base: 'select to line start | ←',
+      base: 'extend right | → count | L',
+    },
+  },
+  {
+    key: '<home>',
+    normal: {
+      base: 'select to line start | ← | <a-h>',
     },
     insert: {
       base: 'go to line start | ←',
     },
   },
   {
-    key: 'End',
+    key: '<s-home>',
     normal: {
-      base: 'select to line end | →',
+      base: 'extend to line start | ← | <a-H>',
+    },
+  },
+  {
+    key: '<end>',
+    normal: {
+      base: 'select to line end | → | <a-l>',
     },
     insert: {
       base: 'go to line end | →',
     },
   },
   {
-    key: 'PageUp',
+    key: '<s-end>',
+    normal: {
+      base: 'extend to line end | → | <a-L>',
+    },
+  },
+  {
+    key: '<pageup>',
     normal: {
       base: 'scroll one page up | ↑ count',
     },
   },
   {
-    key: 'PageDown',
+    key: '<pagedown>',
     normal: {
       base: 'scroll one page down | ↓ count',
     },
   },
   {
-    key: 'Space',
+    key: '<space>',
     normal: {
       base: 'remove all selections except main',
       alt: 'remove main selection',
@@ -895,7 +931,7 @@ const keys = [
     },
   },
   {
-    key: 'Backspace',
+    key: '<backspace>',
     normal: {
       base: 'remove count',
     },
@@ -907,22 +943,7 @@ const keys = [
     },
   },
   {
-    key: 'Delete',
-    insert: {
-      base: 'delete char under cursor',
-    },
-    prompt: {
-      base: 'delete char under cursor',
-    },
-  },
-  {
-    key: 'Return',
-    prompt: {
-      base: 'validate',
-    },
-  },
-  {
-    key: 'Escape',
+    key: '<esc>',
     normal: {
       base: 'end macro recording',
     },
@@ -946,6 +967,33 @@ const keys = [
     },
     combine: {
       base: 'cancel',
+    },
+  },
+  {
+    key: '<tab>',
+    prompt: {
+      base: 'select next completion candidate | ↓→',
+    },
+  },
+  {
+    key: '<s-tab>',
+    prompt: {
+      base: 'select previous completion candidate | ↑←',
+    },
+  },
+  {
+    key: '<delete>',
+    insert: {
+      base: 'delete char under cursor',
+    },
+    prompt: {
+      base: 'delete char under cursor',
+    },
+  },
+  {
+    key: '<ret>',
+    prompt: {
+      base: 'validate',
     },
   },
 ]
