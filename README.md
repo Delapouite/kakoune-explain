@@ -1,6 +1,8 @@
 # Kakoune Explain
 
-**Work in progress**
-
+Interactive tool:
 https://delapouite.github.io/kakoune-explain/
+
+Cheatsheet:
+https://delapouite.github.io/kakoune-explain/keys.html
 

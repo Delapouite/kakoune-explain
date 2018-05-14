@@ -1075,10 +1075,11 @@ const Form = () =>
   h(
     'form',
     {},
+    h('a', { href: 'index.html' }, 'Kakoune explain'),
     h(
       'label',
       {},
-      'Search:',
+      ' Search:',
       h('input', {
         type: 'search',
         placeholder: 'query',
