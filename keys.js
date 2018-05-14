@@ -535,6 +535,9 @@ const keys = [
       base: 'insert command output | register',
       alt: 'append command output | register',
     },
+    prompt: {
+      alt: 'expand the typed expansions',
+    }
   },
   {
     key: '$',
