@@ -48,7 +48,7 @@ const keys = [
     key: 'B',
     normal: {
       base: 'extend to previous word start | ← count',
-      alt: 'extend to previous WORD start | ← count',
+      alt: 'extend to previous WORD start | ← count',
     },
     object: {
       base: 'braces block | object',
@@ -82,7 +82,7 @@ const keys = [
     normal: {
       base: 'delete selection content | register',
       alt: 'delete selection content (not yanking)',
-      ctrl: 'scroll half a page down | ↓',
+      ctrl: 'scroll half a page down | ↓ count',
     },
     prompt: {
       alt: 'delete under cursor',
