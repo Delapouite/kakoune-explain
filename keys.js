@@ -178,7 +178,7 @@ const keys = [
       ctrl: 'jump forward | ↓→ count',
     },
     goto: {
-      base: 'line non blank start | ←',
+      base: 'line non blank start | ←→',
     },
     object: {
       base: 'indent | object',
