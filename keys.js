@@ -114,8 +114,8 @@ const keys = [
   {
     key: 'f',
     normal: {
-      base: 'select to next char included | → count',
-      alt: 'select to previous char included | ← count opposite',
+      base: 'select to next char included | → count | tL',
+      alt: 'select to previous char included | ← count opposite | <a-t>H',
       ctrl: 'scroll one page down | ↓ count',
     },
     goto: {
@@ -125,8 +125,8 @@ const keys = [
   {
     key: 'F',
     normal: {
-      base: 'extend to next char included | → count',
-      alt: 'extend to previous char included | ← count opposite',
+      base: 'extend to next char included | → count | TL',
+      alt: 'extend to previous char included | ← count opposite | <a-T>H',
     },
   },
   {
@@ -401,8 +401,8 @@ const keys = [
   {
     key: 't',
     normal: {
-      base: 'select till next char | → count',
-      alt: 'select till previous char | ← count opposite',
+      base: 'select till next char | → count | fH',
+      alt: 'select till previous char | ← count opposite | <a-f>L',
     },
     goto: {
       base: 'window top | ↑',
@@ -414,8 +414,8 @@ const keys = [
   {
     key: 'T',
     normal: {
-      base: 'extend to next char | → count',
-      alt: 'extend to previous char | ← count opposite',
+      base: 'extend to next char | → count | FH',
+      alt: 'extend to previous char | ← count opposite | <a-F>L',
     },
   },
   {
