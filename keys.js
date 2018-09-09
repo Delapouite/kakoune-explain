@@ -8,6 +8,9 @@ const keys = [
       base: 'insert after selection | →',
       alt: 'select the whole object',
     },
+    prompt: {
+      ctrl: 'go to line start | ←',
+    },
     goto: {
       base: 'last buffer | jump',
     },
@@ -32,7 +35,8 @@ const keys = [
       ctrl: 'scroll one page up | ↑ count',
     },
     prompt: {
-      ctrl: 'go to previous word start | ←',
+      ctrl: 'move to previous char | ←',
+      alt: 'go to previous word start | ←'
     },
     goto: {
       base: 'window bottom | ↓',
@@ -49,6 +53,9 @@ const keys = [
     normal: {
       base: 'extend to previous word start | ← count',
       alt: 'extend to previous WORD start | ← count',
+    },
+    prompt: {
+      alt: 'go to previous WORD start | ←'
     },
     object: {
       base: 'braces block | object',
@@ -85,11 +92,15 @@ const keys = [
       ctrl: 'scroll half a page down | ↓ count',
     },
     prompt: {
-      alt: 'delete under cursor',
+      ctrl: 'delete char under cursor',
+      alt: 'delete to previous word end | ←'
     },
   },
   {
     key: 'D',
+    prompt: {
+      alt: 'delete to previous WORD end | ←'
+    },
   },
   {
     key: 'e',
@@ -98,7 +109,8 @@ const keys = [
       alt: 'select to next WORD end | → count',
     },
     prompt: {
-      ctrl: 'go to previous word end | ←',
+      ctrl: 'go to line end | →',
+      alt: 'go to next word end | →'
     },
     goto: {
       base: 'buffer end | ↓→ jump | %;',
@@ -110,6 +122,9 @@ const keys = [
       base: 'extend to next word end | → count',
       alt: 'extend to next WORD end | → count',
     },
+    prompt: {
+      alt: 'go to next WORD end | →'
+    }
   },
   {
     key: 'f',
@@ -117,6 +132,10 @@ const keys = [
       base: 'select to next char included | → count | tL',
       alt: 'select to previous char included | ← count opposite | <a-t>H',
       ctrl: 'scroll one page down | ↓ count',
+    },
+    prompt: {
+      ctrl: 'move to next char | →',
+      alt: 'go to next word start | →',
     },
     goto: {
       base: 'included file | jump',
@@ -128,6 +147,9 @@ const keys = [
       base: 'extend to next char included | → count | TL',
       alt: 'extend to previous char included | ← count opposite | <a-T>H',
     },
+    prompt: {
+      alt: 'go to next WORD start | →'
+    }
   },
   {
     key: 'g',
@@ -154,7 +176,7 @@ const keys = [
       alt: 'select to line start | ← | <home>',
     },
     prompt: {
-      alt: 'move left | ←',
+      ctrl: 'delete char before cursor | ←',
     },
     goto: {
       base: 'line start | ← | x<a-;>;',
@@ -219,6 +241,9 @@ const keys = [
       base: 'move up | ↑ count | <up>',
       alt: 'keep selections matching given regex',
     },
+    prompt: {
+      ctrl: 'delete to line end | →',
+    },
     goto: {
       base: 'buffer top | ↑← jump | %<a-;>;',
     },
@@ -239,9 +264,6 @@ const keys = [
       base: 'move right | → count | <right>',
       alt: 'select to line end | → | <end>',
       ctrl: 'clear screen',
-    },
-    prompt: {
-      alt: 'move right | →',
     },
     goto: {
       base: 'line end | → | xh',
@@ -304,10 +326,10 @@ const keys = [
       ctrl: 'jump backward | ↑← count',
     },
     insert: {
-      ctrl: 'disable autocompletion for this insert session',
+      ctrl: 'toggle autocompletion for this insert session',
     },
     prompt: {
-      ctrl: 'disable autocompletion for this prompt',
+      ctrl: 'toggle autocompletion for this prompt',
     },
   },
   {
@@ -428,6 +450,9 @@ const keys = [
     insert: {
       ctrl: 'commit changes up to now as a single undo group',
     },
+    prompt: {
+      ctrl: 'delete to line start | ←',
+    },
     object: {
       base: 'argument | object',
     },
@@ -470,7 +495,7 @@ const keys = [
       alt: 'select to next WORD start | → count',
     },
     prompt: {
-      ctrl: 'go to next word start | →',
+      ctrl: 'delete to previous word start | ←',
     },
     object: {
       base: 'word | object',
@@ -481,6 +506,9 @@ const keys = [
     normal: {
       base: 'extend to next word start | → count',
       alt: 'extend to next WORD start | → count',
+    },
+    prompt: {
+      ctrl: 'delete to previous WORD start | ←',
     },
     object: {
       base: 'WORD | object',
@@ -495,9 +523,6 @@ const keys = [
     insert: {
       ctrl: 'choose completion mode',
     },
-    prompt: {
-      alt: 'delete under cursor',
-    },
   },
   {
     key: 'X',
@@ -510,6 +535,9 @@ const keys = [
     key: 'y',
     normal: {
       base: 'yank | register',
+    },
+    prompt: {
+      ctrl: 'insert clipboard before cursor',
     },
   },
   {
@@ -886,6 +914,9 @@ const keys = [
     normal: {
       base: 'select to line start | ← | <a-h>',
     },
+    prompt: {
+      base: 'go to line start | ←',
+    },
     insert: {
       base: 'go to line start | ←',
     },
@@ -900,6 +931,9 @@ const keys = [
     key: '<end>',
     normal: {
       base: 'select to line end | → | <a-l>',
+    },
+    prompt: {
+      base: 'go to line end | →',
     },
     insert: {
       base: 'go to line end | →',
