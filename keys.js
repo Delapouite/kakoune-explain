@@ -282,8 +282,8 @@ const keys = [
   {
     key: 'm',
     normal: {
-      base: 'select to matching char',
-      alt: 'merge contiguous selections together',
+      base: 'select to next matching char | →',
+      alt: 'select to previous matching char | ← opposite',
     },
     view: {
       base: 'center cursor horizontally',
@@ -292,7 +292,8 @@ const keys = [
   {
     key: 'M',
     normal: {
-      base: 'extend to matching char',
+      base: 'extend to next matching char | →',
+      alt: 'extend to previous matching char | ← opposite',
     },
   },
   {
@@ -817,6 +818,7 @@ const keys = [
     key: '_',
     normal: {
       base: 'trim',
+      alt: 'merge contiguous selections together',
     },
   },
   {
