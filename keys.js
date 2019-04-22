@@ -64,7 +64,7 @@ const keys = [
   {
     key: 'c',
     normal: {
-      base: 'change selection content | register | di',
+      base: 'change selection content | register-" | di',
       alt: 'change selection content (not yanking) | <a-d>i',
     },
     goto: {
@@ -87,7 +87,7 @@ const keys = [
   {
     key: 'd',
     normal: {
-      base: 'delete selection content | register',
+      base: 'delete selection content | register-"',
       alt: 'delete selection content (not yanking)',
       ctrl: 'scroll half a page down | ↓ count',
     },
@@ -366,7 +366,7 @@ const keys = [
   {
     key: 'q',
     normal: {
-      base: 'replay recorded macro | count',
+      base: 'replay recorded macro | count register-@',
     },
     object: {
       base: 'single quote string | object',
@@ -375,7 +375,7 @@ const keys = [
   {
     key: 'Q',
     normal: {
-      base: 'start or end macro recording',
+      base: 'start or end macro recording | register-@',
     },
     object: {
       base: 'double quote string | object',
@@ -387,10 +387,10 @@ const keys = [
       base: 'replace with char',
     },
     insert: {
-      ctrl: 'insert given register',
+      ctrl: 'insert given register | register-"',
     },
     prompt: {
-      ctrl: 'insert given register',
+      ctrl: 'insert given register | register-"',
     },
     object: {
       base: 'brackets block | object',
@@ -535,7 +535,7 @@ const keys = [
   {
     key: 'y',
     normal: {
-      base: 'yank | register',
+      base: 'yank | register-"',
     },
     prompt: {
       ctrl: 'insert clipboard before cursor',
@@ -547,22 +547,22 @@ const keys = [
   {
     key: 'z',
     normal: {
-      base: 'restore selections | register',
-      alt: 'combine selections from register',
+      base: 'restore selections | register-^',
+      alt: 'combine selections from register | register-^',
     },
   },
   {
     key: 'Z',
     normal: {
-      base: 'save selections | register',
-      alt: 'combine selections to register',
+      base: 'save selections | register-^',
+      alt: 'combine selections to register | register-^',
     },
   },
   {
     key: '!',
     normal: {
-      base: 'insert command output | register',
-      alt: 'append command output | register',
+      base: 'insert command output | register-|',
+      alt: 'append command output | register-|',
     },
     prompt: {
       alt: 'expand the typed expansions',
@@ -572,15 +572,15 @@ const keys = [
     key: '$',
     normal: {
       base:
-        'pipe each selection through shell command and keep the ones whose command succeed | register',
+        'pipe each selection through shell command and keep the ones whose command succeed | register-|',
     },
   },
   {
     key: '|',
     normal: {
       base:
-        'pipe each selection through filter and replace with output | register',
-      alt: 'pipe each selection through filter and ignore output | register',
+        'pipe each selection through filter and replace with output | register-|',
+      alt: 'pipe each selection through filter and ignore output | register-|',
     },
     register: {
       base: 'shell command',
@@ -650,7 +650,7 @@ const keys = [
       base: 'choose register',
     },
     register: {
-      base: 'yank / paste',
+      base: 'yank / paste / replace',
     },
     object: {
       base: 'double quote string | object',
@@ -669,16 +669,16 @@ const keys = [
   {
     key: '*',
     normal: {
-      base: 'set search register to main selection content | register',
+      base: 'set search register to main selection content | register-/',
       alt:
-        'set search register to main selection content (do not detect word) | register',
+        'set search register to main selection content (do not detect word) | register-/',
     },
   },
   {
     key: '/',
     normal: {
-      base: 'select next given regex match | → jump register',
-      alt: 'select previous given regex match | ← jump register opposite',
+      base: 'select next given regex match | → jump register-/',
+      alt: 'select previous given regex match | ← jump register-/ opposite',
     },
     register: {
       base: 'search',
@@ -687,8 +687,8 @@ const keys = [
   {
     key: '?',
     normal: {
-      base: 'extend with next given regex match | → jump register',
-      alt: 'extend with previous given regex match | ← jump register opposite',
+      base: 'extend with next given regex match | → jump register-/',
+      alt: 'extend with previous given regex match | ← jump register-/ opposite',
     },
   },
   {
@@ -1194,7 +1194,7 @@ const Thead = () =>
 const Td = ({ k, mode, modKey }) => {
   const text = (k[mode] && k[mode][modKey]) || ''
   const hidden = hiddenCols.has(mode + modKey) || !text.match(query)
-  const [def, tags, primitives] = text.split('|')
+  const [def, tags, primitives] = text.split(' |')
   return h(
     'td',
     { key: modKey, className: k[mode] && k[mode][modKey] ? 'exist' : '' },
