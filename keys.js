@@ -962,8 +962,8 @@ const keys = [
   {
     key: '<space>',
     normal: {
-      base: 'remove all selections except main',
-      alt: 'remove main selection',
+      base: 'remove all selections except main | count',
+      alt: 'remove main selection | count',
     },
     object: {
       base: 'whitespaces | object',
