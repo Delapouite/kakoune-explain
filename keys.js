@@ -657,7 +657,7 @@ const keys = [
     },
   },
   {
-    key: ';',
+    key: '; <semicolon>',
     normal: {
       base: 'reduce to cursor',
       alt: 'flip selection direction',
