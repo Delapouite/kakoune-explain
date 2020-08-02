@@ -19,7 +19,7 @@ h2 {
 
 main {
 	margin: 0 auto;
-	width: 940px;
+	max-width: 940px;
 }
 
 #kakoune-logo {
