@@ -417,8 +417,8 @@ const keys = [
   {
     key: 'S',
     normal: {
-      base: 'split on regex',
-      alt: 'split on boundaries',
+      base: 'split on line boundaries',
+      alt: 'select first and last characters of each selection',
     },
   },
   {
