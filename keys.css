@@ -20,6 +20,12 @@ table {
   width: 100%;
 }
 
+thead {
+  background: #fff;
+  position: sticky;
+  top: 0;
+}
+
 th {
   font-size: 12px;
   padding: .2em .8em;
