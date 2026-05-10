@@ -522,8 +522,8 @@ const keys = [
   {
     key: 'x',
     normal: {
-      base: 'select line | count',
-      alt: 'extend selections to whole lines',
+      base: 'extend selections to whole lines',
+      alt: 'trim selections to whole lines',
     },
     insert: {
       ctrl: 'choose completion mode',
@@ -531,10 +531,6 @@ const keys = [
   },
   {
     key: 'X',
-    normal: {
-      base: 'extend line | ↓ count',
-      alt: 'crop selections to whole lines',
-    },
   },
   {
     key: 'y',
