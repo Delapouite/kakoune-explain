@@ -770,7 +770,8 @@ const keys = [
   {
     key: ',',
     normal: {
-      base: 'user mappings',
+      base: 'remove all selections except main | count',
+      alt: 'remove main selection | count',
     },
   },
   {
@@ -963,8 +964,7 @@ const keys = [
   {
     key: '<space>',
     normal: {
-      base: 'remove all selections except main | count',
-      alt: 'remove main selection | count',
+      base: 'user mappings',
     },
     object: {
       base: 'whitespaces | object',
