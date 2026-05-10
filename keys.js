@@ -220,6 +220,7 @@ const keys = [
     normal: {
       base: 'move down | ↓ count | <down>',
       alt: 'join lines',
+      ctrl: 'move forward in history | ↓→ count opposite',
     },
     goto: {
       base: 'buffer bottom | ↓ jump',
@@ -240,6 +241,7 @@ const keys = [
     normal: {
       base: 'move up | ↑ count | <up>',
       alt: 'keep selections matching given regex',
+      ctrl: 'move backward in history | ↑← count',
     },
     prompt: {
       ctrl: 'delete to line end | →',
@@ -445,7 +447,7 @@ const keys = [
     key: 'u',
     normal: {
       base: 'undo | count',
-      alt: 'move backward in history | ↑← count',
+      alt: 'undo last selection change',
       ctrl: 'scroll half a page up | ↑ count',
     },
     insert: {
@@ -465,7 +467,7 @@ const keys = [
     key: 'U',
     normal: {
       base: 'redo | count opposite',
-      alt: 'move forward in history | ↓→ count opposite',
+      alt: 'redo last selection change | opposite',
     },
   },
   {
