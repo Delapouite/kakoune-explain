@@ -818,14 +818,11 @@ const keys = [
     key: '_',
     normal: {
       base: 'trim',
-      alt: 'merge contiguous selections together',
+      alt: 'merge contiguous selections',
     },
   },
   {
     key: '=',
-    normal: {
-      base: '',
-    },
   },
   {
     key: '-',
@@ -835,6 +832,10 @@ const keys = [
   },
   {
     key: '+',
+    normal: {
+      base: 'duplicate each selection',
+      alt: 'merge overlapping selections',
+    },
     combine: {
       base: 'longest',
     },
