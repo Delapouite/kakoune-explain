@@ -983,9 +983,6 @@ const keys = [
   },
   {
     key: '<esc>',
-    normal: {
-      base: 'end macro recording',
-    },
     insert: {
       base: 'leave insert mode',
     },
