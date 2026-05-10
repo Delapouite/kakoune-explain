@@ -6,7 +6,7 @@ const keys = [
     key: 'a',
     normal: {
       base: 'insert after selection | →',
-      alt: 'select the whole object',
+      alt: 'select whole object',
     },
     prompt: {
       ctrl: 'go to line start | ←',
@@ -25,6 +25,7 @@ const keys = [
     key: 'A',
     normal: {
       base: 'insert at line end | →',
+      alt: 'select whole nested object',
     },
   },
   {
@@ -213,6 +214,7 @@ const keys = [
     key: 'I',
     normal: {
       base: 'insert at line start | ←',
+      alt: 'select inner nested object',
     },
   },
   {
